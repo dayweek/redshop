@@ -1,0 +1,170 @@
+<div id="screen-meta">
+  <div id="screen-options-wrap" class="hidden">
+    <form id="adv-settings" action="" method="post">
+      <h5>Show on screen</h5>
+      <div class="metabox-prefs">
+        <label for="tagsdiv-post_tag-hide"><input class="hide-postbox-tog" name="tagsdiv-post_tag-hide" id="tagsdiv-post_tag-hide" value="tagsdiv-post_tag" checked="checked" type="checkbox">Post Tags</label>
+        <label for="categorydiv-hide"><input class="hide-postbox-tog" name="categorydiv-hide" id="categorydiv-hide" value="categorydiv" checked="checked" type="checkbox">Categories</label>
+        <label for="postexcerpt-hide"><input class="hide-postbox-tog" name="postexcerpt-hide" id="postexcerpt-hide" value="postexcerpt" checked="checked" type="checkbox">Excerpt</label>
+        <label for="trackbacksdiv-hide"><input class="hide-postbox-tog" name="trackbacksdiv-hide" id="trackbacksdiv-hide" value="trackbacksdiv" checked="checked" type="checkbox">Send Trackbacks</label>
+        <label for="postcustom-hide"><input class="hide-postbox-tog" name="postcustom-hide" id="postcustom-hide" value="postcustom" checked="checked" type="checkbox">Custom Fields</label>
+        <label for="commentstatusdiv-hide"><input class="hide-postbox-tog" name="commentstatusdiv-hide" id="commentstatusdiv-hide" value="commentstatusdiv" checked="checked" type="checkbox">Discussion</label>
+        <label for="slugdiv-hide"><input class="hide-postbox-tog" name="slugdiv-hide" id="slugdiv-hide" value="slugdiv" type="checkbox">Post Slug</label>
+        <br class="clear">
+      </div>
+      <h5>Screen Layout</h5>
+      <div class="columns-prefs">Number of Columns:
+        <label><input name="screen_columns" value="1" type="radio"> 1</label>
+        <label><input name="screen_columns" value="2" checked="checked" type="radio"> 2</label>
+      </div>
+      <div><input id="screenoptionnonce" name="screenoptionnonce" value="e6c1396000" type="hidden"></div>
+    </form>
+  </div>
+
+  <div id="contextual-help-wrap" class="hidden">
+    <h5>Get help with “Add New Post”</h5><div class="metabox-prefs">
+      <p>Most
+      of the modules on this screen can be moved. If you hover your mouse
+      over the title bar of a module you’ll notice the 4 arrow cursor appears
+      to let you know it is movable. Click on it, hold down the mouse button
+      and start dragging the module to a new location. As you drag the
+      module, notice the dotted gray box that also moves. This box indicates
+      where the module will be placed when you release the mouse button.</p>
+      <p>The
+      same modules can be expanded and collapsed by clicking once on their
+      title bar and also completely hidden from the Screen Options tab.</p>
+      <p><a href="http://codex.wordpress.org/Writing_Posts" target="_blank">Writing Posts</a></p></div>
+    <h5>Other Help</h5><div class="metabox-prefs"><a href="http://codex.wordpress.org/" target="_blank">Documentation</a><br><a href="http://wordpress.org/support/" target="_blank">Support Forums</a></div>
+  </div>
+
+  <div id="screen-meta-links">
+    <div id="contextual-help-link-wrap" class="hide-if-no-js screen-meta-toggle">
+      <a href="#contextual-help" id="contextual-help-link" class="show-settings">Help</a>
+    </div>
+    <div id="screen-options-link-wrap" class="hide-if-no-js screen-meta-toggle">
+      <a href="#screen-options" id="show-settings-link" class="show-settings">Screen Options</a>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrap">
+  <div id="icon-edit" class="icon32"><br></div>
+  <h2><%= title %></h2>
+  <% form_for [:admin,@category,@product] do |f| %>
+
+    <%= f.error_messages %>
+    <input id="_wpnonce" name="_wpnonce" value="e8a78bf921" type="hidden"><input name="_wp_http_referer" value="/~david/wp/wp-admin/post-new.php" type="hidden">
+    <input id="user-id" name="user_ID" value="1" type="hidden">
+    <input id="hiddenaction" name="action" value="post" type="hidden">
+    <input id="originalaction" name="originalaction" value="post" type="hidden">
+    <input id="post_author" name="post_author" value="" type="hidden">
+    <input id="post_type" name="post_type" value="post" type="hidden">
+    <input id="original_post_status" name="original_post_status" value="draft" type="hidden">
+    <input name="referredby" id="referredby" value="" type="hidden">
+    <input id="post_ID" name="temp_ID" value="-1260286552" type="hidden">
+    <div id="poststuff" class="metabox-holder has-right-sidebar">
+      <div id="side-info-column" class="inner-sidebar">
+
+
+        <div id="side-sortables" class="meta-box-sortables ui-sortable">
+          <!-- postranni -->
+          <div id="tagsdiv-post_tag" class="postbox ">
+            <div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>Parametry - povinné</span></h3>
+            <div class="inside">
+              <div class="tagsdiv" id="post_tag">
+                <p>
+                <%= f.label :category_id, "Kategorie" %><br />
+                <%= f.collection_select(:category_id, Category.all, :id, :title) %> 
+                <p class="howto">Kategorie, ve které se zboží zobrazí.</p>
+                </p>
+                <p>
+                <%= f.label :price, "Cena" %><br />
+                <%= f.text_field :price %>
+                <p class="howto">Cena pro návštěvníky.</p>
+                </p>
+                <p>
+                <%= f.label :count, 'Počet' %><br />
+                <%= f.text_field :count %>
+                <p class="howto">Počet kusů, které jsou na skladě. Pokud počet klesne na nulu, uživatelé si nemohou objednávat další.</p>
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div id="tagsdiv-post_tag" class="postbox ">
+            <div class="handlediv" title="Click to toggle"><br></div><h3 class="hndle"><span>Parametry - nepovinné</span></h3>
+            <div class="inside">
+
+              <div class="tagsdiv" id="post_tag">
+                <p>
+                <%= f.label :size, 'Velikost' %><br />
+                <%= f.text_field :size %>
+
+                </p>
+              </div>
+
+
+            </div>
+          </div>
+
+
+          <p>
+          <%= f.submit submit_label %>
+          </p>
+
+      </div></div>
+
+      <div id="post-body">
+        <div id="post-body-content">
+          <div id="titlediv">
+            <div id="titlewrap">
+              <%= f.label :title, "Název" %><br />
+              <%= f.text_field :title, :id => 'title' %>
+            </div>
+            <div class="inside">
+              <div id="edit-slug-box">
+              </div>
+            </div>
+          </div>
+
+          <div id="postdivrich" class="postarea">
+
+            <div id="editor-toolbar">
+              <div class="zerosize"><input accesskey="e" onclick="switchEditors.go('content')" type="button"></div>
+              <a id="edButtonHTML" class="hide-if-no-js" onclick="switchEditors.go('content', 'html');">HTML</a>
+              <a id="edButtonPreview" class="active hide-if-no-js" onclick="switchEditors.go('content', 'tinymce');">Visual</a>
+              <div id="media-buttons" class="hide-if-no-js"></div>
+            </div>
+            <div style="display: none;" id="quicktags">	<script type="text/javascript">edToolbar()</script><div id="ed_toolbar"><input id="ed_strong" accesskey="b" class="ed_button" onclick="edInsertTag(edCanvas, 0);" value="b" type="button"><input id="ed_em" accesskey="i" class="ed_button" onclick="edInsertTag(edCanvas, 1);" value="i" type="button"><input id="ed_link" accesskey="a" class="ed_button" onclick="edInsertLink(edCanvas, 2);" value="link" type="button"><input id="ed_block" accesskey="q" class="ed_button" onclick="edInsertTag(edCanvas, 3);" value="b-quote" type="button"><input id="ed_del" accesskey="d" class="ed_button" onclick="edInsertTag(edCanvas, 4);" value="del" type="button"><input id="ed_ins" accesskey="s" class="ed_button" onclick="edInsertTag(edCanvas, 5);" value="ins" type="button"><input id="ed_img" accesskey="m" class="ed_button" onclick="edInsertImage(edCanvas);" value="img" type="button"><input id="ed_ul" accesskey="u" class="ed_button" onclick="edInsertTag(edCanvas, 7);" value="ul" type="button"><input id="ed_ol" accesskey="o" class="ed_button" onclick="edInsertTag(edCanvas, 8);" value="ol" type="button"><input id="ed_li" accesskey="l" class="ed_button" onclick="edInsertTag(edCanvas, 9);" value="li" type="button"><input id="ed_code" accesskey="c" class="ed_button" onclick="edInsertTag(edCanvas, 10);" value="code" type="button"><input id="ed_more" accesskey="t" class="ed_button" onclick="edInsertTag(edCanvas, 11);" value="more" type="button"><input id="ed_spell" class="ed_button" onclick="edSpell(edCanvas);" title="Dictionary lookup" value="lookup" type="button"><input id="ed_close" class="ed_button" onclick="edCloseAllTags();" title="Close all open tags" value="close tags" type="button"></div>
+            </div>
+
+            <%= f.label :description, 'Popis' %><br />
+            <div id="editorcontainer">
+
+              <%= f.text_area :description, :width => '100%', :height => '150px', :language => :cs, :class => "mceEditor" %>
+            </div>
+            <script type="text/javascript">
+              edCanvas = document.getElementById('content');
+              </script>
+
+
+            </div>
+
+            <div id="advanced-sortables" class="meta-box-sortables ui-sortable">
+            </div>
+          </div>
+        </div>
+        <br class="clear">
+      </div><!-- /poststuff -->
+    </div>
+
+
+  <% end %>
+
+  <script type="text/javascript">
+    try{document.post.title.focus();}catch(e){}
+  </script>
+
+  <div class="clear"></div>

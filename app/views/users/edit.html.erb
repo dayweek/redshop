@@ -1,0 +1,10 @@
+<div class="contact_form">
+  <div class="form_subtitle">Editace účtu</div>
+  <% form_for @user do |f| %>
+    <%= f.error_messages %>
+    <%= render :partial => 'form', :object => f %>
+    <div class="form_row">
+      <%= f.submit "Uložit" , :id => "wp-submit",  :tabindex => "100" %>
+    </div>
+  <% end %>
+</div>  

@@ -1,0 +1,11 @@
+<div class="contact_form">
+  <div class="form_subtitle">Registrace</div>
+  <% form_for @user, :url => user_path do |f| %>
+    <%= f.error_messages %>
+    <%= render :partial => 'form', :object => f %>
+    <div class="form_row">
+      <%= hidden_field_tag('checkout', '1') if @checkout %>
+      <%= f.submit "Registrovat se" , :id => "wp-submit",  :tabindex => "100" %>
+    </div>
+  <% end %>
+</div>  

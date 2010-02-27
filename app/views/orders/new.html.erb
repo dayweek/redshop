@@ -1,0 +1,24 @@
+<div class="contact_form">
+  <div class="form_subtitle">Vytvoření objednávky</div>
+  <%= render :partial => "/carts/cart_items" %>
+
+
+  <% form_for(  @order, :url => order_path) do |f| %>
+    <%= f.error_messages %>
+    <div class="form_row">
+      <%= f.label :payment_type, "Zvolte prosím způsob platby" %><br />
+      <%=  f.select :payment_type, [['Bankovním převodem','bank_transfer'],['Hotově','cash'], ], :tabindex => "10" %>
+    </div>
+    <div class="form_row">
+      <%= f.label :shipment_type, "Zvolte prosím způsob dopravy" %><br />
+      <%=  f.select :shipment_type, [['Česká pošta','ceska_posta'],['Osobní vyzvednutí','vyzvednuti'], ], :tabindex => "10" %>
+    </div>
+    <div class="form_row">
+      <%= f.label :message, "Vzkaz prodejci" %><br />
+      <%=  f.text_area :message, :id => "user_login", :cols => 25, :rows=>7, :tabindex => "10" %>
+    </div>
+    <div class="form_row">
+      <%= f.submit "Dokončit" , :id => "wp-submit",  :tabindex => "100" %>
+    </div>
+  <% end %>
+</div>  

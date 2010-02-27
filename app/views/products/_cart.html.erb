@@ -1,0 +1,11 @@
+<div class="cart">
+  <div class="title"><span class="title_icon"><%= image_tag  "client/cart.gif", :alt=>"", :title=>"" %></span>Košík</div>
+  <div class="home_cart_content" id="home_cart_content">
+    <% unless cart.empty? %>
+      Počet položek: <%= cart.total_items %> | <span class="red">Celkem: <%= cart.total_price %>,-</span>
+    <% else %>
+      Nemáte nic v košíku.
+    <% end %>
+  </div>
+  <%= link_to ("obsah", cart_url, :class => 'view_cart') unless @cart.empty? %>
+</div>

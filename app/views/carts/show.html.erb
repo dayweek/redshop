@@ -1,0 +1,7 @@
+<div class="title"><span class="title_icon">
+    <%= image_tag "client/bullet2.gif",  :alt=>"",  :title=>"" %>
+</span>Obsah košíku</div> 
+<%= render :partial => "cart_items" %>
+<%= link_to ('Objednat', :action => 'new', :controller => 'order') unless @cart.empty? %>
+
+

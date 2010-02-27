@@ -1,0 +1,53 @@
+<% if @category then %>
+  <div class="crumb_nav">
+    <%= link_to 'domů', root_url %> &gt;&gt; <%= @category.title %>
+  </div>
+<% end %>
+
+<!--             <div class="title"><span class="title_icon"><img src="images/client/bullet1.gif" alt="" title="" /></span>Featured pets</div> -->
+
+<!-- <div class="feat_prod_box">
+
+  <div class="prod_img"><a href="details.html"><img src="client/prod1.gif" alt="" title="" border="0" /></a></div>
+
+  <div class="prod_det_box">
+    <div class="box_top"></div>
+    <div class="box_center">
+      <div class="prod_title">Product name</div>
+      <p class="details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+      <a href="details.html" class="more">- more details -</a>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box_bottom"></div>
+  </div>    
+  <div class="clear"></div>
+</div>-->	
+
+
+
+
+
+
+<div class="title"><span class="title_icon"><%= image_tag "client/bullet2.gif", :alt=>"", :title=>"" %>
+</span><%= if @category then @category.title else 'Nabízíme Vám' end %></div> 
+
+<div class="new_products">
+  <% @products.each do |product| %>
+    <div class="new_prod_box">
+      <%= link_to product.title, product_url(product) %>
+      <div class="new_prod_bg">
+        <span class="new_icon"><%= image_tag "client/new_icon.gif", :alt=>"", :title=>"" %></span>
+
+        <%= link_to  image_tag (product.photo_url(:thumb), :class => 'thumb', :border => 0, :id => 'picture_to_cart_' + product.id.to_s),product_url(product) %>
+
+      </div>           
+      <span class="prod_price"><%= product.price %>,-</span>
+      <!-- <%= link_to 'Koupit', :action => 'add_to_cart_and_redirect', :id => product %> -->
+      <%= link_to_remote 'Koupit', :url => { :action => 'add_to_cart_and_redirect', :id => product } %>
+    </div>
+  <% end %>
+
+</div> 
+
+

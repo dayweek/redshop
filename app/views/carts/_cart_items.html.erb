@@ -1,0 +1,11 @@
+<div class="new_products">
+  <table>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= link_to item[:title], product_url(item[:id])  %></td>
+        <td><span class="prod_price"><%= item[:quantity] %></span></td>
+        <td><span class="prod_price"><%= item[:price] %></span></td>
+      </tr>
+    <% end %>
+  </table>
+</div> 

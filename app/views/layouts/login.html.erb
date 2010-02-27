@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+
+
+    <title>Přihlášení do administrace</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <%= stylesheet_link_tag 'login' %>
+    <%= stylesheet_link_tag 'colors-fresh' %>
+    <meta name="robots" content="noindex,nofollow">
+    </head><body class="login">
+
+    <div id="login"><h1><a href="http://wordpress.org/" title="Powered by WordPress">Testik</a></h1>
+      <% if flash[:notice] %>
+        <p class="message"><%=	flash[:notice] %><br>
+        </p>
+      <% end %>
+
+      <% form_for @keeper_session, :url => admin_keeper_session_path do |f| %>
+        <p>
+        <%= f.label :login, "Uživatelské jméno" %><br />
+        <%=  f.text_field :login , :id => "user_login", :tabindex => "10" %>
+        </p>
+        <p>
+        <%= f.label :login, "Heslo" %><br />
+        <%=  f.password_field :password , :id => "user_pass",  :tabindex => "20" %>
+        </p>
+        <!-- 
+        <p class="forgetmenot"><label><input name="rememberme" id="rememberme" value="forever" tabindex="90" type="checkbox"> Remember Me</label></p>
+        -->
+        <p class="submit">
+        <%= f.submit "Přihlásit se" , :id => "wp-submit",  :tabindex => "100" %>
+        <input name="redirect_to" value="http://127.0.1.1/~david/wp/wp-admin/" type="hidden">
+        <input name="testcookie" value="1" type="hidden">
+        </p>
+      <% end %>
+
+      <!-- 
+      <p id="nav">
+      <a href="http://127.0.1.1/%7Edavid/wp/wp-login.php?action=lostpassword" title="Password Lost and Found">Lost your password?</a>
+      </p> 
+      -->
+
+    </div>
+
+    <p id="backtoblog"><a href="#">← Zpět do obchodu</a></p>
+
+    <script type="text/javascript">
+      try{document.getElementById('user_login').focus();}catch(e){}
+      </script>
+  </body></html>

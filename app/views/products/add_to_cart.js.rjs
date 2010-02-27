@@ -1,0 +1,24 @@
+#page.select("div#notice" ).each { |div| div.hide }
+#page << "var left = $('cart_target').getStyle('left'));"
+#page.assign "left", page[:cart_target].get_style('left')
+#page << "alert(left);"
+
+#page << "top = $('cart_target').getStyle('top');"
+#page << "$('test123').morph('opacity: 0.0; left: $('cart_target').getStyle('left'); top:$('cart_target').getStyle('top') ');"
+#page.replace_html("cart" , :partial => "products/cart" , :object => @cart)
+# page[:cart].visual_effect :blind_down if @cart.total_items == 1
+#page[:current_item].visual_effect :highlight,
+#                                  :startcolor => "#88ff88" ,
+#                                  :endcolor => "#114411"
+
+#page[:home_cart_content].visual_effect :highlight,
+#                                  :startcolor => "#88ff88" ,
+#                                  :endcolor => "#114411"
+#left = page[:test123].get_style('left')
+#page[:home_cart_content].insert_html 'aaa'
+#page.insert_html :bottom, 'home_cart_content', 
+#page[:test123].visual_effect :morph, :style=> { :opacity => '0.0', :left => '1px', :top => '1px' }
+
+#page[:test123].visual_effect :puff
+page.call 'add_to_cart_effect_jquery', 'picture_to_cart_' + params[:id].to_s
+page.replace_html("cart" , :partial => "products/cart" , :object => @cart)

@@ -1,0 +1,125 @@
+<div class="crumb_nav">
+  <%= link_to 'domů', root_url %> &gt;&gt; <%= link_to @product.category.title, category_url(@product.category) %> &gt;&gt; <%= @product.title %>
+</div>
+<div class="title"><span class="title_icon"><%= image_tag "client/bullet1.gif", :alt=>"", :title=>"" %></span><%= @product.title %></div>
+
+<div class="feat_prod_box_details">
+
+  <div class="prod_img">
+
+    <%=  image_tag (@product.photo_url(:medium), :border => 0, :alt => "") %>
+
+    <br /><br />
+    <%= link_to image_tag("/images/client/zoom.gif", :alt=>"", :title=>"", :border=>"0"), @product.photo_url(:big), :rel => 'gal', :id =>"single_image" %>
+  </div>
+
+  <div class="prod_det_box">
+    <div class="box_top"></div>
+    <div class="box_center">
+      <div class="prod_title">Podrobnosti</div>
+      <div class="details"><%= @product.description %></div>
+      <div class="price"><strong>CENA:</strong> <span class="red"><%= @product.price %>,-</span></div>
+      <!-- <div class="price"><strong>COLORS:</strong> 
+        <span class="colors"><img src="/images/color1.gif" alt="" title="" border="0" /></span>
+        <span class="colors"><img src="/images/color2.gif" alt="" title="" border="0" /></span>
+        <span class="colors"><img src="/images/color3.gif" alt="" title="" border="0" /></span>
+      </div>
+      -->
+      <%= link_to image_tag( '/images/client/order_now.gif', :alt=>"Objednat", :border=>"0"), {:action => 'add_to_cart_and_redirect',  :id => @product}, {:class=>"more"}   %>
+      <div class="clear"></div>
+    </div>
+
+    <div class="box_bottom"></div>
+  </div>    
+  <div class="clear"></div>
+</div>	
+
+<div class="new_products">
+  <% @product.photos.each do |photo| %>
+    <% unless photo == @product.photos.first then %>
+      <div class="new_prod_box">
+        <div class="new_prod_bg">
+          <%= link_to image_tag (photo.photo.url(:thumb), :border => 0, :class => 'thumb'), photo.photo.url(:big), :rel => 'gal', :id =>"single_image" %>
+        </div>           
+      </div>
+    <% end %>
+  <% end %>
+
+</div> 
+
+<!-- <div id="demo" class="demolayout">-->
+  <!---->
+  <!--<ul id="demo-nav" class="demolayout">-->
+    <!--<li><a class="active" href="#tab1">More details</a></li>-->
+    <!--<li><a class="" href="#tab2">Related books</a></li>-->
+    <!--</ul>-->
+  <!---->
+  <!--<div class="tabs-container">-->
+    <!---->
+    <!--<div style="display: block;" class="tab" id="tab1">-->
+      <!--<p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.-->
+      <!--</p>-->
+      <!--<ul class="list">-->
+        <!--<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>-->
+        <!--<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>-->
+        <!--<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>-->
+        <!--<li><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit</a></li>                                          -->
+        <!--</ul>-->
+      <!--<p class="more_details">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.-->
+      <!--</p>                           -->
+      <!--</div>	-->
+    <!---->
+    <!--<div style="display: none;" class="tab" id="tab2">-->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>-->
+      <!---->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>                    -->
+      <!---->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>    -->
+      <!---->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb1.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>-->
+      <!---->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb2.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>                    -->
+      <!---->
+      <!--<div class="new_prod_box">-->
+        <!--<a href="details.html">product name</a>-->
+        <!--<div class="new_prod_bg">-->
+          <!--<a href="details.html"><img src="images/thumb3.gif" alt="" title="" class="thumb" border="0" /></a>-->
+          <!--</div>           -->
+        <!--</div>  -->
+      <!---->
+      <!---->
+      <!---->
+      <!--<div class="clear"></div>-->
+      <!--</div>	-->
+    <!---->
+    <!--</div>-->
+  <!---->
+  <!---->
+  <!-- </div>-->
+
+<div class="clear"></div>

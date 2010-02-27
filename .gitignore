@@ -1,0 +1,3 @@
+config/deploy.rb
+config/database.yml
+log/*

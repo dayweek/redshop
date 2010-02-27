@@ -1,0 +1,24 @@
+<div class="form_row">
+  <%= form.label :login, "Uživatelské jméno" %><br />
+  <%=  form.text_field :login , :id => "user_login", :tabindex => "10" %>
+</div>
+<div class="form_row">
+  <%= form.label :email, "E-mail" %><br />
+  <%=  form.text_field :email , :id => "user_login", :tabindex => "10" %>
+</div>
+<div class="form_row">
+  <%= form.label :password, form.object.new_record? ? "Heslo" : "Změnit heslo" %><br />
+  <%=  form.password_field :password , :id => "user_pass",  :tabindex => "20" %>
+</div>
+<div class="form_row">
+  <%= form.label :password_confirmation, "Heslo pro kontrolu" %><br />
+  <%=  form.password_field :password_confirmation , :id => "user_pass",  :tabindex => "20" %>
+</div>
+<% if form.object.new_record? then %>
+  <div class="form_row">
+
+    <%= form.label 'answer', @question %><br />
+    <%=  form.text_field 'answer' , :tabindex => "20" %>
+    <%= form.hidden_field 'rightanswer', :value =>  @rightanswer %>
+  </div>
+<% end %>
