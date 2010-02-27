@@ -7,7 +7,7 @@ class CreateSettings < ActiveRecord::Migration
 
       t.timestamps
     end
-    Setting.new(:shipping_price => 100, :bank_account_title => 'mBank', :bank_account_number => 55555).save!
+    Setting.new(:shipping_ceska_posta_price => 100, :bank_account_title => 'mBank', :bank_account_number => 55555).save!
   end
 
   def self.down
