@@ -1,4 +1,4 @@
-class PagesController < AdministrationController
+class PagesController < ClientController
   before_filter :load_pages
 
   def about_us
