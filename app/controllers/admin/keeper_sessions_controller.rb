@@ -11,7 +11,7 @@ class Admin::KeeperSessionsController < Admin::AdministrationController
     @keeper_session = Admin::KeeperSession.new(params[:admin_keeper_session])
     if @keeper_session.save
       flash[:notice] = "Přihlášení úspěšné."
-      redirect_back_or_default admin_categories_path
+      redirect_back_or_default admin_root_path
     else
       render :action => :new
     end

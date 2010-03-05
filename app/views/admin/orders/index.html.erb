@@ -10,37 +10,6 @@
   <% end %>
 
 
-
-  <% form_tag(admin_orders_path,  :method => "get") do %>
-    <% # form_tag('/admin/products', :method => "get") do %>
-
-
-
-
-      <input type="hidden" value="list" name="mode"/>
-
-
-      <div class="tablenav">
-
-        <div class="alignleft actions">
-          <%= select_tag "action", options_for_select(%w{ Deaktivovat } => 'deactivate') %>
-          <input type="submit" class="button-secondary action" id="doaction" name="doaction" value="Provést"/>
-          Kategorie
-          <%= select_tag 'category_id', options_from_collection_for_select(Category.find(:all), 'id' , 'title') %>
-
-
-          <%= submit_tag "Filtrovat", :class => 'button' %>
-
-        </div>
-
-
-
-
-        <div class="clear"/>
-        </div>
-
-        <div class="clear"/>
-
           <table cellspacing="0" class="widefat post fixed">
             <thead>
               <tr>
@@ -62,11 +31,6 @@
               <% end %>
             </tbody>
           </table>
-
-
-
-        <% end %>
-
 
         <div id="ajax-response"/>
 

@@ -2,7 +2,7 @@
 
 <div class="wrap">
   <div class="icon32" id="icon-edit"><br/></div>
-  <h2>Zboží na skladě</h2>
+  <h2>Uživatelé</h2>
   <% if flash[:notice] %>
     <div id="message" class="updated fade">
       <p><%= flash[:notice] %></p>
@@ -50,7 +50,7 @@
               <% @users.each do |user| %>
                 <tr valign="top" class="alternate author-self status-publish iedit" id="post-8">
                   <th class="check-column" scope="row"><%= check_box_tag 'users[]', user.id %></th>
-                  <td class="post-title column-title"><strong><%= user.login %></strong>
+                  <td class="post-title column-title"><strong><%= link_to user.login, edit_admin_user_path(user) %></strong>
 
                   </td>
                   <td class="date column-date"><%= user.updated_at %></td>     </tr>

@@ -6,6 +6,14 @@ class ClientController <  ApplicationController
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
 
+
+  def render_not_found(exception)
+    log_error(exception)
+    render "/error/404.html.erb", :status => 404, :layout => 'client'
+    #render :text => 'none'
+  end
+
+
   def empty_cart
     session[:cart] = nil
     respond_to do |format|
@@ -15,7 +23,7 @@ class ClientController <  ApplicationController
   end
 
   private 
-  def add_to_cart (redirect_path)
+  def add_to_cart(redirect_path)
     @current_item = @cart.add_product(params[:id])
     respond_to  do |format|
       format.js {  if request.xhr? then
@@ -23,14 +31,14 @@ class ClientController <  ApplicationController
                    end }
       format.html { 
         flash[:notice]  = 'Zboží bylo přidáno do košíku.'
-        redirect_to (redirect_path)
+        redirect_to(redirect_path)
       }
     end
   end
   
   def find_cart
     if current_user
-      @cart ||= UserCart.new (current_user.id)
+      @cart ||= UserCart.new(current_user.id)
     else  
       session[:cart] ||= Cart.new
       @cart = session[:cart]

@@ -29,4 +29,13 @@ class OrdersController < ClientController
     flash[:notice] = 'Zboží bylo objednáno.'
     redirect_to root_url
   end
+
+  def index
+    @orders = Order.find(:all, :joins => :user, :conditions => {:users => { :id => current_user }})
+  end
+
+  def show
+    @order = Order.find(params[:id], :include => {:order_items => :product})
+    @total_price = @order.order_items.sum('quantity * price')
+  end
 end

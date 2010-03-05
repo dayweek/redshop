@@ -1,11 +1,24 @@
 <div class="new_products">
   <table>
+      <tr>
+        <td>Název zboží</td>
+        <td><span class="prod_price">Počet</span></td>
+        <td><span class="prod_price">Cena za jeden</span></td>
+        <td><span class="prod_price">Cena za skupinu</span></td>
+      </tr>
     <% @items.each do |item| %>
       <tr>
         <td><%= link_to item[:title], product_url(item[:id])  %></td>
         <td><span class="prod_price"><%= item[:quantity] %></span></td>
         <td><span class="prod_price"><%= item[:price] %></span></td>
+        <td><span class="prod_price"><%= item[:total_price] %></span></td>
       </tr>
     <% end %>
+      <tr>
+        <td>Celková cena:</td>
+        <td></td>
+        <td></td>
+        <td><strong><%= @cart.total_price %>,-</strong></td>
+      </tr>
   </table>
 </div> 

@@ -1,0 +1,14 @@
+.title
+  %span.title_icon
+    = image_tag "client/bullet2.gif",  :alt=>"",  :title=>""
+  Objednávky
+.new_products
+  %table
+    %tr
+      %td
+        Datum objednání
+    - @orders.each do |order|
+      %tr
+        %td
+          = link_to order.created_at, order_url(order)
+    

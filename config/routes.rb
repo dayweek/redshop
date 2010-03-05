@@ -41,11 +41,10 @@ ActionController::Routing::Routes.draw do |map|
   #map.product ":category_id/:id",  :controller => "products", :action => :show
   #
   map.namespace(:admin) do |admin|
-    admin.root :controller => "admin", :action => "index"
+    admin.root :controller => "dashboards", :action => "show"
     #admin.logout 'logout', :controller => "keeper_sessions", :action => "destroy"
     #admin.logout 'logout', :controller  => "keeper_sessions", :action =>  :destroy
-    admin.resource :keeper_session
-    admin.resource :setting
+    admin.resource :setting, :page, :keeper_session, :dashboard
     admin.resources :users
     admin.resources :orders, :member => { :change_state => :put }
     admin.resources   :products, :member => { :deactivate => :put } do |product| 
@@ -59,12 +58,16 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.resources :products
   map.resources :categories, :has_many => :products , :shallow => true 
-  map.resource :user
+  map.resource :user do |user|
+    user.resources :orders
+  end
   map.resource :cart
-  map.resource :order
+  map.resources :orders
   map.resource :user_session
   map.root :controller => "categories", :action => "show"
   map.connect '', :controller => "categories", :action => "show"
+  map.connect 'o-nas', :controller => "pages", :action => "o_nas"
+  map.connect 'obchodni-podminky', :controller => "pages", :action => "terms_and_conditions"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/'

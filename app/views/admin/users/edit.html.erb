@@ -1,0 +1,46 @@
+<div class="wrap">
+  <div id="icon-edit" class="icon32"><br></div>
+  <h2>Uživatel</h2>
+  <p>
+  Jméno: <%= @user.name %>
+  </p>
+  <p>
+  Login: <%= @user.login %>
+  </p>
+  <p>
+  Adresa
+  <ul>
+    <li><%= @user.street %></li>
+    <li><%= @user.city %></li>
+    <li><%= @user.post_code %></li>
+  </ul>
+  </p>
+  <p><strong>Objednávky</strong></p>
+  <table cellspacing="0" class="widefat post fixed">
+    <thead>
+      <tr>
+        <th style="" class="manage-column column-title" id="title" scope="col">Datum objednávky</th>
+        <th style="" class="manage-column column-title" id="title" scope="col">Stav</th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+      <% @user.orders.each do |order| %>
+        <tr valign="top" class="alternate author-self status-publish iedit" id="post-8">
+          <td class="post-title column-title"><strong><%= link_to order.created_at, edit_admin_order_url(order) %></strong>
+          </td>
+          <td class="post-title column-title"><strong><%= order.state_human %></strong>
+
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div id="ajax-response">
+    <%= link_to 'Deaktivovat', deactivate_admin_user_path(@user) %> 
+    <%= link_to 'Deaktivovat', mail_admin_user_path(@user) %> 
+  </div>
+</div>
+
+<div class="clear"></div>

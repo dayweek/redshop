@@ -8,7 +8,7 @@ class Cart
   items = []
   @items.each do |item|
     p = Product.find(item.product)
-    items << {:id => p.id, :title => p.title, :price => p.price * item.quantity, :quantity =>  item.quantity }
+    items << {:id => p.id, :title => p.title, :price => p.price, :total_price => p.price * item.quantity, :quantity =>  item.quantity }
   end
   items
   end

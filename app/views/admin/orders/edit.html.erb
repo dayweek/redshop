@@ -33,6 +33,7 @@
 <div class="wrap">
   <div id="icon-edit" class="icon32"><br></div>
   <h2>Objednávka</h2>
+  <h3>Obsah objednávky</h3>
   <table cellspacing="0" class="widefat post fixed">
     <thead>
       <tr>
@@ -59,6 +60,7 @@
       <% end %>
     </tbody>
   </table>
+  <h3>Detaily objednávky</h3>
   <p>
   Celkem: <%= @total %>,- <%= "(včetně poštovného #{@order.shipment_price},-)" %>
 
@@ -68,6 +70,16 @@
   </p>
   <p>
   Způsob dodání: <%= @shipment_text %> 
+  </p>
+  <p>
+  <h3>Adresa uživatele</h3>
+  <ul>
+    <li><%= @order.user.name %></li>
+    <li><%= @order.user.street %></li>
+    <li><%= @order.user.city %></li>
+    <li><%= @order.user.post_code %></li>
+  </ul>
+  <%= link_to "Profil uživatele", edit_admin_user_path(@order.user) %>
   </p>
   <div id="ajax-response"></div>
   <% form_for [:admin, @order], :url => {:action => 'change_state', :state => 'finished'} do |f| %>

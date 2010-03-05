@@ -48,7 +48,7 @@ class UserCart
     items = []
     cart_items = UserCartItem.find(:all, :conditions => { :user_id => @user_id }, :include => :product)
     cart_items.each do |cart_item|
-      items << {:id => cart_item.product.id, :title => cart_item.product.title, :price => cart_item.product.price * cart_item.quantity, :quantity =>  cart_item.quantity }
+      items << {:id => cart_item.product.id, :title => cart_item.product.title, :total_price => cart_item.product.price * cart_item.quantity, :price => cart_item.product.price, :quantity =>  cart_item.quantity }
     end
     items
   end
