@@ -1,0 +1,7 @@
+@import "layout.css";
+@import "steely.css";
+
+.handle { 
+  cursor: move; 
+  margin-left: 5px;
+}

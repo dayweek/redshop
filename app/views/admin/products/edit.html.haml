@@ -1,0 +1,4 @@
+%h2 Upravit zboží
+- form_for [:admin,@category,@product] do |f|
+  = render :partial => "form", :locals => { :product => @product, :f => f} 
+  = f.submit "Uložit"

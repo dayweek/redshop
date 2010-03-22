@@ -1,0 +1,4 @@
+%h2 Úprava kategorie
+- form_for [:admin,@category] do |f|
+  = render :partial => "form", :locals => { :product => @product, :f => f } 
+  = f.submit "Uložit"

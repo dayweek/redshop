@@ -1,0 +1,32 @@
+%h2
+  Fotografie zboží
+  = @product.title
+= link_to "Nová fotografie", new_admin_product_photo_url(@product)
+- unless  @photos.empty?
+  %table
+    %thead
+      %tr
+        %th
+        %th
+          Název
+        %th
+        %th
+    %tbody
+      - @photos.each do |photo|
+        - content_tag_for :tr, photo, :class => "iedit alternate" do
+          %td
+            = image_tag photo.photo.url(:thumb)
+          %td
+            = h photo.title
+          %td
+            = link_to 'Upravit', edit_admin_product_photo_path(@product,photo)
+          %td
+            = link_to 'Odstranit', [:admin, @product, photo] , :confirm => 'Jste si jist?', :method => :delete
+- else
+  %p
+    Nenalezeny žádné fotografie k danému zboží.
+%p
+  %strong
+    Poznámka:
+  %br
+    První obrázek se zobrazí v náhledu zboží (když si zákazník prohlíží kategorii uvidí ten první obrázek).

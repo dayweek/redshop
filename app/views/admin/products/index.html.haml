@@ -1,0 +1,24 @@
+- form_tag(admin_products_path,  :method => "get") do
+  %div
+    Akce
+    = select_tag "action", options_for_select(%w{ Deaktivovat } => 'deactivate')
+    Zobrazit z kategorie
+    = select_tag 'category_id', options_from_collection_for_select(Category.find(:all), 'id' , 'title')
+    = submit_tag "Provést"
+  %table
+    %thead
+      %tr
+        %th
+        %th Název
+        %th
+        %th Kategorie
+        %th Datum poslední úpravy
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= check_box_tag 'products[]', product.id
+          %td
+            %strong= link_to product.title, edit_admin_product_url(product)
+          %td= link_to "Fotografie", admin_product_photos_url(product)
+          %td= product.category.title
+          %td= pretty_time product.updated_at

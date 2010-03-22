@@ -1,0 +1,33 @@
+- unless  @categories.empty?
+  %table
+    %thead
+      %tr
+        %th
+        %th Název
+        %th 
+        %th 
+        %th
+    %tbody#categories
+      - @categories.each do |category|
+        - content_tag_for :tr, category do
+          %td
+            = image_tag 'handle.png', :class => 'handle'
+          %td
+            = link_to category.title, admin_category_products_path(category), :class => 'row-title'
+          %td
+            = link_to 'Procházet',admin_products_url(:category_id => category.id)
+          %td
+            = link_to 'Upravit', edit_admin_category_path(category)
+          %td
+            = link_to 'Odstranit', [:admin, category] , :confirm => 'Jste si jist?', :method => :delete
+  = sortable_element 'categories', :url => sort_admin_categories_path, :handle => 'handle', :tag => 'tr'
+- else
+  %p
+    Žádné kategorie nalezeny.
+%p
+  %strong
+    Poznámka:
+  %br
+  Při smazání kategorie se smaže i zboží, které se v ní nacházelo.
+%p
+  Pořadí kategorií se mění potáhnutím modrého čtverečku. Levým tlačítkem se uchopí čtvereček kategorie a tažením se přemísti na příslušný řádek.

@@ -1,0 +1,26 @@
+%h2
+  Nástěnka
+%h3
+  Nové objednávky:
+  = @new_orders_count
+- @months.each do |month|
+  %h4 
+    Měsíc: 
+    = month[:title]
+  %table
+    %tr
+      %td
+        Počet dokončených objednávek
+      %td
+        = month[:finished_orders_count]
+    %tr
+      %td
+        Počet prodaných kusů
+      %td
+        = month[:items_quantity]
+        = @this_month_quantity
+    %tr
+      %td
+        Celkem obrat:
+      %td
+        = month[:total]

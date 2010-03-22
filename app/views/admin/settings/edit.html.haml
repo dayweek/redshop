@@ -1,0 +1,14 @@
+%h2 Nastavení
+- form_for [:admin,@setting], :url => { :action => "update" } do |f|
+  = f.error_messages
+  - form_row do
+    = f.label :shipping_ceska_posta_price, "Poštovné přes Českou poštu"
+    = f.text_field :shipping_ceska_posta_price
+  - form_row do
+    = f.label :bank_account_number, "Číslo účtu"
+    = f.text_field :bank_account_number
+  - form_row do
+    = f.label :bank_account_title, "Název banky"
+    = f.text_field :bank_account_title
+  - form_row do
+    = f.submit 'Uložit'

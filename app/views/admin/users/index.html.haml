@@ -1,0 +1,23 @@
+- form_tag(admin_users_path,  :method => "get") do
+  = select_tag "action", options_for_select(%w{ Deaktivovat } => 'deactivate')
+  = submit_tag "Provést"
+  %table
+    %thead
+      %tr
+        %th
+          
+         
+        %th
+          Login
+        %th
+          Datum poslední úpravy
+    %tbody
+      - @users.each do |user|
+        %tr
+          %th
+            = check_box_tag 'users[]', user.id
+          %td
+            %strong
+              = link_to user.login, edit_admin_user_path(user)
+          %td
+            = pretty_time user.updated_at

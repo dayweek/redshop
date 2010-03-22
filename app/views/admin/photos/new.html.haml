@@ -1,0 +1,4 @@
+%h2 Nová fotografie
+- form_for [:admin, @product, @photo], :html => { :multipart => true } do |f|
+  = render :partial => "form", :locals => { :photo => @photo, :f => f } 
+  = f.submit "Vložit"

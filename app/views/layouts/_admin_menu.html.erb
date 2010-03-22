@@ -1,0 +1,18 @@
+        <ul>
+          <li><%= link_to 'Nástěnka', admin_dashboard_url %></li>
+          <ul>
+            <li><%= link_to 'Zboží', admin_products_url %></li>
+            <li><%= link_to 'Nová položka', new_admin_product_url %></li>
+          </ul>
+          <ul>
+          <li><%= link_to 'Kategorie', admin_categories_url %></li>
+            <li><%= link_to 'Nová kategorie', new_admin_category_url %></li>
+          </ul>
+          <li><%= link_to 'Uživatelé', admin_users_url %></li>
+          <ul>
+          <li><%= link_to 'Nové objednávky', admin_orders_url (:state => 'new') %></li>
+          <li><%= link_to 'Dokončené objednávky', admin_orders_url (:state => 'finished') %></li>
+          </ul>
+          <li><%= link_to 'Nastavení', edit_admin_setting_url  %></li>
+          <li><%= link_to 'Stránky', edit_admin_page_url  %></li>
+        </ul>

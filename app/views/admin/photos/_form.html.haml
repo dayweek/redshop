@@ -1,0 +1,9 @@
+= f.error_messages
+- form_row do
+  = f.label :title, "Název"
+  = f.text_field :title
+  %p Volitelný název obrázku.
+- form_row do
+  = f.label :photo, "Soubor k nahrání"
+  = f.file_field :photo
+  = f.hidden_field :product_id

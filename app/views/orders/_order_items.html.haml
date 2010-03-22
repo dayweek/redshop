@@ -1,0 +1,26 @@
+%table
+  %tr
+    %td
+      Název zboží
+    %td
+      %span
+        Počet
+    %td
+      %span
+        Cena za jeden
+    %td
+      %span
+        Cena za skupinu
+  - order_items.each do |item|
+    %tr
+      %td
+        = link_to item.product.title, product_url(item.product_id)
+      %td
+        %span
+          = item.quantity
+      %td
+        %span
+          = item.price
+      %td
+        %span
+          = item.total_price

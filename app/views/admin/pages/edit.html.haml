@@ -1,0 +1,21 @@
+- form_for [:admin,@page], :url => { :action => "update" } do |f|
+  = f.error_messages
+  - form_row do
+    = f.label :faq, "Často kladené otázky"
+    = f.text_area :faq, :width => '400px', :height => '400px', :language => :cs, :class => "mceEditor"
+  - form_row do
+    = f.label :about_us, "O nás"
+    = f.text_area :about_us, :width => '400px', :height => '400px', :language => :cs, :class => "mceEditor"
+  - form_row do
+    = f.label :terms_and_conditions, "Obchodní podmínky"
+    = f.text_area :terms_and_conditions, :width => '100%', :height => '150px', :language => :cs, :class => "mceEditor"
+  - form_row do
+    = f.label :contact, "Kontaktní informace"
+    = f.text_area :contact, :width => '100%', :height => '150px', :language => :cs, :class => "mceEditor"
+    %p.help 
+      Zde nepište e-mailovou adresu v podobě snadno rozeznatelné strojem. Uveďte ji například ve tvaru 
+      %i
+        info ZAVINAC obchod TECKA cz
+      \.
+  - form_row do
+    = f.submit 'Uložit'

@@ -1,0 +1,22 @@
+= f.error_messages
+- form_row do
+  = f.label :title, "Název"
+  = f.text_field :title, :id => 'title'
+- form_row do
+  = f.label :description, 'Popis'
+  = f.text_area :description, :language => :cs, :class => "mceEditor"
+- form_row do
+  = f.label :category_id, "Kategorie"
+  = f.collection_select(:category_id, Category.all, :id, :title)
+  %p.help Kategorie, ve které se zboží zobrazí.
+- form_row do
+  = f.label :price, "Cena"
+  = f.text_field :price
+  %p.help Cena pro návštěvníky.
+- form_row do
+  = f.label :count, 'Počet'
+  = f.text_field :count
+  %p.help Počet kusů, které jsou na skladě.
+- form_row do
+  = f.label :size, 'Velikost'
+  = f.text_field :size

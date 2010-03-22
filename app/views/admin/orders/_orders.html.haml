@@ -1,0 +1,19 @@
+- unless orders.nil?
+  %table
+    %thead
+      %tr
+        %th
+          Datum objednávky
+        %th
+          Stav
+    %tbody
+      - orders.each do |order|
+        %tr
+          %td
+            %strong
+              = link_to pretty_time(order.created_at), edit_admin_order_url(order)
+          %td
+            %strong
+              = order.state_human
+- else
+  %p Žádné objednávky.

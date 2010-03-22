@@ -1,0 +1,7 @@
+%h2 Uživatel
+= render :partial => "user"
+%strong Objednávky
+= render :partial => "/admin/orders/orders", :object => @user.orders
+%p
+  = link_to 'Deaktivovat', deactivate_admin_user_path(@user)
+  = link_to 'Poslat email', mail_admin_user_path(@user)
