@@ -26,8 +26,9 @@ class OrdersController < ClientController
       when 'ceska_posta'
         order.shipment_price = @settings.shipping_ceska_posta_price
     end
+    order.save!
     flash[:notice] = 'Zboží bylo objednáno.'
-    redirect_to root_url
+    redirect_to order_url(order)
   end
 
   def index
@@ -36,6 +37,5 @@ class OrdersController < ClientController
 
   def show
     @order = Order.find(params[:id], :include => {:order_items => :product})
-    @total_price = @order.order_items.sum('quantity * price')
   end
 end

@@ -2,45 +2,23 @@
   %span.title_icon
     = image_tag "client/bullet2.gif",  :alt=>"",  :title=>""
   Objednávka ze dne
-  = @order.created_at
+  = pretty_time @order.created_at
 .new_products
-  %table
-    %tr
-      %td
-        Název zboží
-      %td
-        %span.prod_price
-          Počet
-      %td
-        %span.prod_price
-          Cena za jeden
-      %td
-        %span.prod_price
-          Cena za skupinu
-    - @order.order_items.each do |item|
-      %tr
-        %td
-          = link_to item.product.title, product_url(item.product_id)
-        %td
-          %span.prod_price
-            = item.quantity
-        %td
-          %span.prod_price
-            = item.price
-        %td
-          %span.prod_price
-            = item.total_price
-    %tr
-      %td
-        Celková cena za zboží:
-      %td
-      %td
-      %td
-        %strong
-          = @total_price
-          ,-
-
-%p
-  Poštovné:
-  = @order.shipment_price
+  = render :partial => 'order_items', :object => @order.order_items
+  %p
+  Celkem:
+  = (@order.items_total_price.to_f + @order.shipment_price)
   ,-
+  = "(včetně poštovného #{@order.shipment_price},-)"
+
+%p 
+  %strong Způsob dodání:
+  = @order.shipment_type_human
+  %br
+  = shipment_desc(@order, @settings)
+%p 
+  %strong Platba:
+  = @order.payment_type_human
+  %br
+  = payment_desc(@order, @settings)
+= link_to 'Zobrazit mé objednávky', orders_url

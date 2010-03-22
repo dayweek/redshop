@@ -1,5 +1,5 @@
 class ClientController <  ApplicationController
-  before_filter :load_categories, :find_cart, :find_top
+  before_filter :load_categories, :find_cart, :find_top, :load_pages
   
   helper :all
   layout "client"
@@ -94,4 +94,11 @@ class ClientController <  ApplicationController
   def load_categories
     @categories = Category.all
   end
+
+  def load_pages 
+    @pages = Page.first
+  end
+
+
+
 end

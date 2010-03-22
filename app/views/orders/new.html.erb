@@ -9,12 +9,24 @@
       <%= f.label :payment_type, "Zvolte prosím způsob platby" %><br />
       <%=  f.select :payment_type, [['Bankovním převodem','bank_transfer'],['Hotově','cash'], ], :tabindex => "10" %>
     </div>
+    <p><strong>Bankovním převodem</strong><br/>
+      Na účet <%= @settings.bank_account_title %> (<%= @settings.bank_account_number %>). Variabilní symbol Vám sdělíme po dokončení objednávky.
+    </p>
+    <p><strong>Hotově</strong><br/>
+      Částku stačí osobně donést na naši adresu.
+    </p>
     <div class="form_row">
       <%= f.label :shipment_type, "Zvolte prosím způsob dopravy" %><br />
       <%=  f.select :shipment_type, [['Česká pošta','ceska_posta'],['Osobní vyzvednutí','vyzvednuti'], ], :tabindex => "10" %>
     </div>
+    <p><strong>Česká pošta</strong><br/>
+    Zboží zašleme Českou poštou s poštovným <strong><%= @settings.shipping_ceska_posta_price %>,-</strong>.
+    </p>
+    <p><strong>Osobní vyzvednutí</strong><br/>
+      Zboží si můžete vyzvednout na naší adrese.
+    </p>
     <div class="form_row">
-      <%= f.label :message, "Vzkaz prodejci" %><br />
+      <%= f.label :message, "Chcete nám něco vzkázat?" %><br />
       <%=  f.text_area :message, :id => "user_login", :cols => 25, :rows=>7, :tabindex => "10" %>
     </div>
     <div class="form_row">

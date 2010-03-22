@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :tests
+
 
 
 
@@ -45,7 +47,7 @@ ActionController::Routing::Routes.draw do |map|
     #admin.logout 'logout', :controller => "keeper_sessions", :action => "destroy"
     #admin.logout 'logout', :controller  => "keeper_sessions", :action =>  :destroy
     admin.resource :setting, :page, :keeper_session, :dashboard
-    admin.resources :users
+    admin.resources :users, :member => { :deactivate => :put,  :mail => :put  }
     admin.resources :orders, :member => { :change_state => :put }
     admin.resources   :products, :member => { :deactivate => :put } do |product| 
     product.resources :photos
@@ -66,8 +68,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.root :controller => "categories", :action => "show"
   map.connect '', :controller => "categories", :action => "show"
-  map.connect 'o-nas', :controller => "pages", :action => "o_nas"
-  map.connect 'obchodni-podminky', :controller => "pages", :action => "terms_and_conditions"
+  map.onas 'o-nas', :controller => "pages", :action => "o_nas"
+  map.obch_podm 'obchodni-podminky', :controller => "pages", :action => "terms_and_conditions"
+  map.faq 'casto-kladene-otazky', :controller => "pages", :action => "faq"
+  map.faq 'kontakt', :controller => "pages", :action => "contact"
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/'

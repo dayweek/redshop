@@ -25,6 +25,7 @@
             <li><a href="#">jak nakupovat</a></li>
             <li><a href="#">kontakt</a></li>
             -->
+            <li><%= link_to "Často kladené otázky", faq_url %></li>
             <% if current_user_session then %>
               <li><%= link_to "můj účet", edit_user_url %></li>
               <li><%= link_to "odhlásit", user_session_url, :method => :delete  %></li>
@@ -76,7 +77,7 @@
           <div class="about">
             <p>
             <%= image_tag "client/about.gif" , :alt=>"",  :title=>"", :class=>"right" %>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.
+            <%= @pages.about_us %>
             </p>
 
           </div>
@@ -84,7 +85,7 @@
           <div class="right_box">
 
             <div class="title"><span class="title_icon"><%= image_tag  "client/bullet4.gif", :alt=>"",  :title=>"" %></span>
-              Nejprodávanější</div> 
+              Doporučujeme</div> 
             <% @top_items.each do |item| %>
               <div class="new_prod_box">
                 <%= link_to item.title, product_url(item) %></a>

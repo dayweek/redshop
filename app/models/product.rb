@@ -4,11 +4,14 @@ class Product < ActiveRecord::Base
    validates_presence_of :title
    validates_numericality_of :price, :greater_than_or_equal_to => 0
    validates_numericality_of :count, :only_integer => true, :greater_than_or_equal_to => 0
+   validates_associated :category
+   validates_presence_of :category
+
    belongs_to :category
    has_many :photos, :dependent => :destroy 
    has_many :users, :through => :user_cart_items
    has_many :user_cart_items
-
+   
    def self.find_top
      find(:all, :include => :photos, :order => 'rand()', :limit => 2)
    end

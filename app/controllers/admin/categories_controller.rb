@@ -40,7 +40,7 @@ class Admin::CategoriesController <  Admin::AdministrationController
         format.xml  { render :xml => @category, :status => :created, :location => @category }
       else
         @categories = Category.find (:all, :order => 'position')
-        format.html { render  :action => "index" }
+        format.html { render  :action => "new" }
         format.xml  { render :xml => @category.errors, :status => :unprocessable_entity }
       end
     end

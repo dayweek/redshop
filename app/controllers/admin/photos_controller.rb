@@ -15,7 +15,7 @@ class Admin::PhotosController < Admin::AdministrationController
   # GET /photos/new
   # GET /photos/new.xml
   def new
-    @photo = Photo.new
+    @photo = Photo.new(:product_id => @product.id)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +40,7 @@ class Admin::PhotosController < Admin::AdministrationController
         format.html { redirect_to admin_product_photos_path(@product) }
         format.xml  { render :xml => @photo, :status => :created, :location => @photo }
       else
-        format.html { render  :action => "index" }
+        format.html { render  :action => "new" }
         format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
       end
     end

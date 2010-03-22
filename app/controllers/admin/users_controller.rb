@@ -16,16 +16,6 @@ class Admin::UsersController < Admin::AdministrationController
 
   def edit
     @user = User.find(params[:id], :include => :orders)
-    @user.orders.each do |order|
-      case order.state
-      when 'new'
-        order.state_human = 'Nová'
-      when 'finished'
-        order.state_human = 'Dokončená'
-      else
-        order.state_human = 'Neznámý typ'
-      end
-    end
   end
 
   def destroy

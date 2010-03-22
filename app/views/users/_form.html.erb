@@ -1,18 +1,41 @@
+<h2>Přihlašovací údaje</h2>
 <div class="form_row">
   <%= form.label :login, "Uživatelské jméno" %><br />
   <%=  form.text_field :login , :id => "user_login", :tabindex => "10" %>
 </div>
 <div class="form_row">
-  <%= form.label :email, "E-mail" %><br />
-  <%=  form.text_field :email , :id => "user_login", :tabindex => "10" %>
-</div>
-<div class="form_row">
   <%= form.label :password, form.object.new_record? ? "Heslo" : "Změnit heslo" %><br />
   <%=  form.password_field :password , :id => "user_pass",  :tabindex => "20" %>
+  <% if not form.object.new_record? %>
+    <p>Pokud nechcete změnit heslo, políčka ponechce prázdné.
+    </p>
+  <% end %>  
 </div>
 <div class="form_row">
   <%= form.label :password_confirmation, "Heslo pro kontrolu" %><br />
   <%=  form.password_field :password_confirmation , :id => "user_pass",  :tabindex => "20" %>
+</div>
+<h2>Kontakt</h2>
+<div class="form_row">
+  <%= form.label :email, "E-mail" %><br />
+  <%=  form.text_field :email , :id => "user_login", :tabindex => "10" %>
+</div>
+<h2>Dodací Adresa</h2>
+<div class="form_row">
+  <%= form.label :name, "Jméno" %><br />
+  <%=  form.text_field :name , :tabindex => "20" %>
+</div>
+<div class="form_row">
+  <%= form.label :street, "Ulice a číslo popisné" %><br />
+  <%=  form.text_field :street , :tabindex => "20" %>
+</div>
+<div class="form_row">
+  <%= form.label :city, "Město" %><br />
+  <%=  form.text_field :city , :tabindex => "20" %>
+</div>
+<div class="form_row">
+  <%= form.label :post_code, "Poštovní směrovací číslo" %><br />
+  <%=  form.text_field :post_code , :tabindex => "20" %>
 </div>
 <% if form.object.new_record? then %>
   <div class="form_row">

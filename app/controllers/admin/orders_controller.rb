@@ -15,25 +15,7 @@ class Admin::OrdersController < Admin::AdministrationController
   def edit
     @order = Order.find(params[:id], :include => {:order_items => :product})
     @total = @order.order_items.sum('quantity * price')
-
-    case @order.shipment_type 
-      when 'ceska_posta'
-        @shipment_text = "Česká pošta (#{@settings.shipping_ceska_posta_price},-)"
-      when 'vyzvednuti'
-        @shipment_text = "Osobní vyzvednutí."
-      else
-        @shipment_text = "Chyba aplikace! Neznámý způsob dodání."
-    end
-
     @total = @total.to_f + @order.shipment_price
-    case @order.payment_type 
-      when 'bank_transfer'
-        @payment_text = "Převodem na účet. Variabilní symbol: #{@order.created_at.year.to_s + @order.id.to_s}"
-      when 'cash'
-        @payment_text = "Hotově"
-      else
-        @payment_text = "Chyba aplikace! Neznámý způsob platby."
-    end
   end
 
   def change_state
